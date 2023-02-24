@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Superimpose Images</title>
+    <style>
+      #image1,
+      #image2 {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      #image2 {
+        transform-origin: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="display: flex; flex-direction: row-reverse">
+      <img id="image2" src="img_2.png" />
+      <img id="image1" src="img_1.png" />
+      <label for="vertical-input">Move up/down:</label>
+      <input
+        type="number"
+        id="vertical-input"
+        min="-100"
+        max="100"
+        value="0"
+        step="1"
+      />
+      <label for="skew-input">Skew:</label>
+      <input
+        type="number"
+        id="skew-input"
+        min="-45"
+        max="45"
+        value="0"
+        step="1"
+      />
+      <label for="rotate-input">Rotate:</label>
+      <input
+        type="number"
+        id="rotate-input"
+        min="-180"
+        max="180"
+        value="0"
+        step="1"
+      />
+    </div>
+
+    <script>
+      const image2 = document.getElementById("image2");
+      const verticalInput = document.getElementById("vertical-input");
+      const skewInput = document.getElementById("skew-input");
+      const rotateInput = document.getElementById("rotate-input");
+      verticalInput.addEventListener("input", () => {
+        const verticalValue = verticalInput.value;
+        const skewValue = skewInput.value;
+        const rotateValue = rotateInput.value;
+        image2.style.transform = `rotate(${rotateValue * -1}deg) skewY(${skewValue}deg) translateY(${verticalValue}px)`;
+      });
+      skewInput.addEventListener("input", () => {
+        const verticalValue = verticalInput.value;
+        const skewValue = skewInput.value;
+        const rotateValue = rotateInput.value;
+        image2.style.transform = `rotate(${rotateValue * -1}deg) skewY(${skewValue}deg) translateY(${verticalValue}px)`;
+      });
+      rotateInput.addEventListener("input", () => {
+        const verticalValue = verticalInput.value;
+        const skewValue = skewInput.value;
+        const rotateValue = rotateInput.value;
+        image2.style.transform = `rotate(${rotateValue * -1}deg) skewY(${skewValue}deg) translateY(${verticalValue}px)`;
+      });
+    </script>
+  </body>
+</html>
